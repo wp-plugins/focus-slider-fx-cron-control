@@ -26,7 +26,7 @@ script. wp_scripts@tarnazar.pp.ua
 
 == Installation ==
 
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
+1. Upload focus-slider-fx-cron-control to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. The Cron Job is writing manually as it is * * * * * cd /path/to/wp-plugin-dir/focus-slider-fx_cron_control; /path/to/php gen_flashxml.php 1>/dev/null 2/dev/null.
    You can specify the time to run the cron job as you wish
