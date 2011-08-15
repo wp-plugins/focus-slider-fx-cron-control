@@ -11,13 +11,13 @@ License: GPL2
 
 /* start global parameters */
 function save_database_settings ($db_user,$db_pass,$db_name,$db_location) {
-$xml =  simplexml_load_file(WP_PLUGIN_DIR."/focus-slider-fx_cron_control/settings.xml");
+$xml =  simplexml_load_file(WP_PLUGIN_DIR."/ffocus-slider-fx-cron-control/settings.xml");
 foreach ($xml->xpath('//settings') as $item) {
     $item->db_user = $db_user;
     $item->db_pass = $db_pass;
     $item->db_name = $db_name;
     $item->db_location = $db_location;
- if ($xml->asXML(WP_PLUGIN_DIR."/focus-slider-fx_cron_control/settings.xml")) {
+ if ($xml->asXML(WP_PLUGIN_DIR."/ffocus-slider-fx-cron-control/settings.xml")) {
      return true;
          } else
              {
@@ -27,11 +27,11 @@ foreach ($xml->xpath('//settings') as $item) {
 
 }
 function save_settings_file ($photos_count,$fp) {
-$xml =  simplexml_load_file(WP_PLUGIN_DIR."/focus-slider-fx_cron_control/settings.xml");
+$xml =  simplexml_load_file(WP_PLUGIN_DIR."/ffocus-slider-fx-cron-control/settings.xml");
 foreach ($xml->xpath('//settings') as $item) {
     $item->photos_count = $photos_count;
     $item->path = $fp;
-    if ($xml->asXML(WP_PLUGIN_DIR."/focus-slider-fx_cron_control/settings.xml")) {
+    if ($xml->asXML(WP_PLUGIN_DIR."/ffocus-slider-fx-cron-control/settings.xml")) {
     return true;
     } else 
     {
@@ -41,7 +41,7 @@ foreach ($xml->xpath('//settings') as $item) {
 }
 
 function load_settings_file () {
-$xml = simplexml_load_file(WP_PLUGIN_DIR."/focus-slider-fx_cron_control/settings.xml");
+$xml = simplexml_load_file(WP_PLUGIN_DIR."/ffocus-slider-fx-cron-control/settings.xml");
 
 $photos_count = $xml->children()->photos_count;
 $fp = $xml->children()->path;
