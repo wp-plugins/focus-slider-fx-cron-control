@@ -7,7 +7,6 @@ Tested up to: 3.2.1
 Stable tag: 2.0.2
 
 Plugin generates XML file for FlashXML plugins. This XML file containes pathes to latest loaded pictures on the site.
-characters.  No markup here.
 
 == Description ==
 
