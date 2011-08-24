@@ -4,7 +4,7 @@ Donate link: http://tarnazar.pp.ua/wp_plugins/
 Tags: galeries, xml, flashxml
 Requires at least: 2.0.2
 Tested up to: 3.2.1
-Stable tag: 4.3
+Stable tag: 2.0.2
 
 Here is a short description of the plugin.  This should be no more than 150
 characters.  No markup here.
