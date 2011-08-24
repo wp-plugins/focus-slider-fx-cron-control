@@ -40,13 +40,25 @@ no available
 
 == Changelog ==
 
-This is a first testting version...
+0.2.0.1
+Plugin Renamed!
+ 1. Bug fixes;
+ 2. Added manualy update (without cron job) option
+ 3. Photo Flipper FX Plugin Tested - it works!
 
 == Upgrade Notice ==
-none
+Plugin Renamed!
+
+ 1. Bug fixes;
+ 2. Added manualy update (without cron job) option
+ 3. Photo Flipper FX Plugin Tested - it works!
 
 == Arbitrary section ==
-none
+In future versions:
+  - The ability to choose pictures, images manually
+  - Add comments to photos
+  - Support for other products FlashXML
+
 
 == A brief Markdown Example ==
 none

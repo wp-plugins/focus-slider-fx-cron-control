@@ -1,37 +1,67 @@
 <?php
 /*
-Plugin Name: Focus Slider FX CRON CONTROL
-Plugin URI: http://tarnazar.pp.ua
-Description: Control panel for automatic add images to Focus Slider FX. 
-Version: 0.1
+Plugin Name: FlashXML plugins CONTROL
+Plugin URI: http://tarnazar.pp.ua/wp_plugins
+Description: Control panel for FlashXML plugins.
+Version: 0.2.0.1
 Author: Samael
-Author URI: http://www.tarnazar.pp.ua
+Author URI: http://www.tarnazar.pp.ua/wp_plugins
 License: GPL2
 */
+ini_set('display_errors',1);
+$global_vars = array(
+'plugin_dir_path'=>realpath(dirname(__FILE__)),
+);
 
-/* start global parameters */
+function manual_update () {
+global $wpdb;
+global $global_vars;
+$xml = simplexml_load_file($global_vars['plugin_dir_path']."/settings.xml");
+    $photos_count = $xml->children()->photos_count;
+    $path = $xml->children()->path;
+
+$get_list_sql = $wpdb->get_results("select post_date,guid, post_name,post_title from $wpdb->posts where post_mime_type='image/jpeg' ORDER BY  post_date DESC limit $photos_count;",'ARRAY_A');
+
+$xml=new DomDocument('1.0','utf-8');
+$images = $xml->appendChild($xml->createElement('images'));
+
+foreach ($get_list_sql as $key => $val) {
+   $photo = $images->appendChild($xml->createElement('photo'));
+    $photo->setAttribute('image',$val['guid']);
+}
+
+$xml->formatOutput = true;
+$out = html_entity_decode($xml->saveXML());
+$fp = "$path";
+$ttest = fopen($fp,"w");
+fputs ($ttest,$out);
+fclose($ttest);
+}
+
+
 function save_database_settings ($db_user,$db_pass,$db_name,$db_location) {
-$xml =  simplexml_load_file(WP_PLUGIN_DIR."/focus-slider-fx-cron-control/settings.xml");
-foreach ($xml->xpath('//settings') as $item) {
+global $global_vars;
+$xml =  simplexml_load_file($global_vars['plugin_dir_path']."/settings.xml");
+   foreach ($xml->xpath('//settings') as $item) {
     $item->db_user = $db_user;
     $item->db_pass = $db_pass;
     $item->db_name = $db_name;
     $item->db_location = $db_location;
- if ($xml->asXML(WP_PLUGIN_DIR."/focus-slider-fx-cron-control/settings.xml")) {
-     return true;
-         } else
-             {
-                 return false;
-                     }
-                     }
-
+      if ($xml->asXML($global_vars['plugin_dir_path']."/settings.xml")) {
+        return true;
+      } else {
+        return false;
+      }
+    }
 }
+
 function save_settings_file ($photos_count,$fp) {
-$xml =  simplexml_load_file(WP_PLUGIN_DIR."/focus-slider-fx-cron-control/settings.xml");
+global $global_vars;
+$xml =  simplexml_load_file($global_vars['plugin_dir_path']."/settings.xml");
 foreach ($xml->xpath('//settings') as $item) {
     $item->photos_count = $photos_count;
     $item->path = $fp;
-    if ($xml->asXML(WP_PLUGIN_DIR."/focus-slider-fx-cron-control/settings.xml")) {
+    if ($xml->asXML($global_vars['plugin_dir_path']."/settings.xml")) {
     return true;
     } else 
     {
@@ -41,7 +71,8 @@ foreach ($xml->xpath('//settings') as $item) {
 }
 
 function load_settings_file () {
-$xml = simplexml_load_file(WP_PLUGIN_DIR."/focus-slider-fx-cron-control/settings.xml");
+global $global_vars;
+$xml = simplexml_load_file($global_vars['plugin_dir_path']."/settings.xml");
 
 $photos_count = $xml->children()->photos_count;
 $fp = $xml->children()->path;
@@ -53,7 +84,7 @@ return array("photos_count"=>$photos_count,"fp"=>$fp,"db_user"=>$db_user,"db_pas
 }
 
 function admin_control() {
-        add_options_page('Focus Slider FX cron control', 'Focus Slider FX cron control', 'manage_options', 'fsfx_cc', 'fsfx_cc_options');
+        add_options_page('FlashXML plugins Control', 'FlashXML plugins Control', 'manage_options', 'fsfx_cc', 'fsfx_cc_options');
             }
 
 function fsfx_cc_options () {
@@ -68,6 +99,10 @@ echo "Database Settings is Ok!";
 if (save_database_settings($wpdb->dbuser,$wpdb->dbpassword,$wpdb->dbname,$wpdb->dbhost)) {
 echo "Database configuration was wrong. But now its Ok";
 }
+}
+if (isset($_GET['do_manual'])) {
+manual_update();
+echo "<br>Updated!";
 }
 ?>
 <div class="wrap">
@@ -95,17 +130,23 @@ echo "Database configuration was wrong. But now its Ok";
         </p>
 
 </form>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']) ?>&do_manual">
+<?php wp_nonce_field('update-options'); ?>
+<p class="submit">
+<input type="submit" name="manual" class="button-primary" value="Update Manualy" />
+<input type="hidden" name="action" value="<?php echo$_GET['action']?>" />
+</p>
+
+
+
+</form>
+
 </div>
 <?php 
 
 ?>
 <?php
 }
-
-function regenerate_now() {
-exec ('php gen_flashxml.php');
-}
-
 
 add_action('admin_menu', 'admin_control');
 ?>
