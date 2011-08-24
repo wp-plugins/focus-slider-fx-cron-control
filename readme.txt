@@ -6,7 +6,7 @@ Requires at least: 2.0.2
 Tested up to: 3.2.1
 Stable tag: 2.0.2
 
-Here is a short description of the plugin.  This should be no more than 150
+Plugin generates XML file for FlashXML plugins. This XML file containes pathes to latest loaded pictures on the site.
 characters.  No markup here.
 
 == Description ==
