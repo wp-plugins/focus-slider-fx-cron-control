@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<settings>
+<photos_count>5</photos_count>
+<path>/var/www/wp_plugins_testing/wp-content/flashxml/images.xml</path>
+<db_user>testing_wp</db_user>
+<db_pass>testing_wp</db_pass>
+<db_name>testing_wp</db_name>
+<db_location>localhost</db_location>
+<use_comments>on</use_comments>
+</settings>
