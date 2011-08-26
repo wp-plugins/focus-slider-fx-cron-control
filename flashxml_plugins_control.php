@@ -3,7 +3,7 @@
 Plugin Name: FlashXML plugins CONTROL
 Plugin URI: http://tarnazar.pp.ua/wp_plugins
 Description: Control panel for FlashXML plugins.
-Version: 0.1.1
+Version: 0.2.0.2
 Author: Samael
 Author URI: http://www.tarnazar.pp.ua/wp_plugins
 License: GPL2
