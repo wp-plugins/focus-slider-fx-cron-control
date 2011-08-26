@@ -38,26 +38,26 @@ none
 no available
 
 == Changelog ==
-0.2.0.2
--Now you can use comments for your pictures
+ = 0.2.0.2 =
+ * Now you can use comments for your pictures
 
-0.2.0.1
-Plugin Renamed!
-1. Bug fixes;
-2. Added manualy update (without cron job) option
-3. Photo Flipper FX Plugin Tested - it works!
+ = 0.2.0.1 = 
+ * Plugin Renamed!
+ * 1. Bug fixes;
+ * 2. Added manualy update (without cron job) option
+ * 3. Photo Flipper FX Plugin Tested - it works!
 
 == Upgrade Notice ==
-Plugin Renamed!
-1. Bug fixes;
-2. Added manualy update (without cron job) option
-3. Photo Flipper FX Plugin Tested - it works!
+
+ = 0.2.0.2 =
+ * Now you can use comments for your pictures
 
 == Arbitrary section ==
-In future versions:
-- The ability to choose pictures, images manually
-- Add comments to photos from plugin page
-- Support for other products FlashXML
+ 
+  = In future versions: =
+ * The ability to choose pictures, images manually
+ * Add comments to photos from plugin page
+ * Support for other products FlashXML
 
 
 == A brief Markdown Example ==
