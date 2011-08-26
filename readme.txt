@@ -53,10 +53,11 @@ no available
  * Now you can use comments for your pictures
 
 == Arbitrary section ==
-In future versions:
-- The ability to choose pictures, images manually
-- Add comments to photos from plugin page
-- Support for other products FlashXML
+ 
+  = In future versions: =
+ * The ability to choose pictures, images manually
+ * Add comments to photos from plugin page
+ * Support for other products FlashXML
 
 
 == A brief Markdown Example ==
