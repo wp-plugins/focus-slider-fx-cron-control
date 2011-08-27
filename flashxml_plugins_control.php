@@ -127,7 +127,7 @@ echo "<br>Updated!";
         Focus Slider FX plug-in doesn't came with this package. It should be installed separately.
         The Cron Job is writing manually as it is <b>* * * * * cd <?php echo $global_vars['plugin_dir_path'];?>; <?php echo exec('which php');?> gen_flashxml.php 1>/dev/null 2/dev/null </b>.
 
-	- Now you can use comments for your pictures. You can input your comments in the medial library.
+	- Now you can use comments for your pictures. You can input your comments in the media library.
 	
 	        
         </pre> 
